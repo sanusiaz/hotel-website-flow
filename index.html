@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OceanBlue Hotel & Suites</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .bg-hero {
+            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1542314831-c6a4d7429362?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg animate__animated animate__pulse animate__infinite"></div>
+                    <span class="font-bold text-2xl text-slate-900 tracking-tight">Ocean<span class="text-blue-600">Blue</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-blue-600 font-semibold transition-colors">Home</a>
+                    <a href="#rooms" class="text-slate-600 hover:text-blue-600 transition-colors">Rooms</a>
+                    <a href="#amenities" class="text-slate-600 hover:text-blue-600 transition-colors">Amenities</a>
+                    <a href="policies.html" class="text-slate-600 hover:text-blue-600 transition-colors">Policies</a>
+                </div>
+                <div>
+                    <a href="booking.html" class="bg-blue-600 text-white px-6 py-2.5 rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center bg-hero pt-20">
+        <div class="text-center px-4 animate__animated animate__fadeInUp">
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Experience Unrivaled Comfort</h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto">Discover the perfect blend of modern luxury and exceptional service in the heart of the city.</p>
+        </div>
+
+        <!-- Booking Bar UI -->
+        <div class="absolute -bottom-16 left-0 right-0 max-w-5xl mx-auto px-4 animate__animated animate__fadeInUp animate__delay-1s">
+            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-4 flex flex-col md:flex-row gap-4 items-end border border-slate-100">
+                <div class="w-full md:w-1/4">
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Check-in</label>
+                    <input type="date" class="w-full border-slate-200 border rounded-lg p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-700">
+                </div>
+                <div class="w-full md:w-1/4">
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Check-out</label>
+                    <input type="date" class="w-full border-slate-200 border rounded-lg p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-700">
+                </div>
+                <div class="w-full md:w-1/4">
+                    <label class="block text-sm font-medium text-slate-600 mb-1">Guests</label>
+                    <select class="w-full border-slate-200 border rounded-lg p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-700 bg-white">
+                        <option>1 Adult, 0 Children</option>
+                        <option selected>2 Adults, 0 Children</option>
+                        <option>2 Adults, 2 Children</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <a href="booking.html" class="block text-center w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md">Check Availability</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Preview Section -->
+    <section id="rooms" class="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Signature Rooms</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">Designed for ultimate relaxation, featuring premium bedding, panoramic views, and tailored amenities.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Room Card 1 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-slate-100">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Deluxe Room">
+                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">From $150/night</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Executive Deluxe Room</h3>
+                    <p class="text-slate-600 text-sm mb-4">Spacious 40sqm room with city views, king-size bed, and dedicated workspace.</p>
+                    <a href="booking.html" class="text-blue-600 font-semibold hover:text-blue-800 flex items-center gap-1">Reserve Room <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Room Card 2 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-slate-100">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Suite">
+                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">From $280/night</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Ocean View Suite</h3>
+                    <p class="text-slate-600 text-sm mb-4">Luxury 65sqm suite featuring a separate living area and a private balcony.</p>
+                    <a href="booking.html" class="text-blue-600 font-semibold hover:text-blue-800 flex items-center gap-1">Reserve Room <span>&rarr;</span></a>
+                </div>
+            </div>
+
+            <!-- Room Card 3 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-slate-100">
+                <div class="h-64 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Penthouse">
+                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">From $550/night</div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Presidential Penthouse</h3>
+                    <p class="text-slate-600 text-sm mb-4">Top-floor luxury with two bedrooms, private jacuzzi, and panoramic skyline views.</p>
+                    <a href="booking.html" class="text-blue-600 font-semibold hover:text-blue-800 flex items-center gap-1">Reserve Room <span>&rarr;</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Live Chat Mockup -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        <!-- Chat Window (Hidden by default, shown for demo) -->
+        <div class="bg-white w-80 rounded-xl shadow-2xl border border-slate-200 mb-4 overflow-hidden animate__animated animate__fadeInUp">
+            <div class="bg-blue-600 p-4 text-white flex justify-between items-center">
+                <div>
+                    <h4 class="font-bold">Live Support</h4>
+                    <p class="text-xs text-blue-100">We typically reply in 2 minutes</p>
+                </div>
+                <button class="text-white hover:text-blue-200">&times;</button>
+            </div>
+            <div class="h-64 bg-slate-50 p-4 overflow-y-auto flex flex-col gap-3 text-sm">
+                <div class="bg-white p-3 rounded-lg rounded-tl-none border border-slate-100 shadow-sm self-start max-w-[85%] text-slate-700">
+                    Hello! How can we assist with your booking today?
+                </div>
+                <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none shadow-sm self-end max-w-[85%] text-white">
+                    I need to know if you offer airport shuttles.
+                </div>
+            </div>
+            <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
+                <input type="text" placeholder="Type a message..." class="w-full border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-600">
+                <button class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                    &rarr;
+                </button>
+            </div>
+        </div>
+        
+        <!-- Chat Toggle Button -->
+        <button class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <span class="font-bold text-2xl text-white tracking-tight mb-4 block">Ocean<span class="text-blue-500">Blue</span></span>
+                <p class="text-sm text-slate-400">Setting the standard for modern hospitality and exceptional guest experiences.</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">Rooms & Suites</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">Dining & Bar</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">Spa & Wellness</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Terms & Conditions</a></li>
+                    <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                    <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4">Contact</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li>123 Blue Avenue, City Center</li>
+                    <li>reservations@oceanblue.com</li>
+                    <li>+1 (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

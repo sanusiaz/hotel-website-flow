@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms & Suites - OceanBlue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation (Simplified for prototype) -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg"></div>
+                <span class="font-bold text-2xl text-slate-900">Ocean<span class="text-blue-600">Blue</span></span>
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="text-slate-600 hover:text-blue-600 font-medium">Home</a>
+                <a href="rooms.html" class="text-blue-600 font-semibold">Rooms</a>
+                <a href="policies.html" class="text-slate-600 hover:text-blue-600 font-medium">Policies</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bg-slate-900 py-16">
+        <div class="max-w-7xl mx-auto px-4 text-center animate__animated animate__fadeIn">
+            <h1 class="text-4xl font-bold text-white mb-4">Our Rooms & Suites</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">Find the perfect space for your stay, from cozy standard rooms
+                to our expansive presidential suites.</p>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 py-12 flex flex-col md:flex-row gap-8">
+
+        <!-- Filters Sidebar -->
+        <aside class="w-full md:w-64 flex-shrink-0 animate__animated animate__fadeInLeft">
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 sticky top-28">
+                <h3 class="font-bold text-slate-900 mb-4 border-b border-slate-100 pb-2">Filter Results</h3>
+
+                <div class="mb-6">
+                    <h4 class="text-sm font-semibold text-slate-700 mb-3">Room Type</h4>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                class="accent-blue-600"> Standard</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                class="accent-blue-600" checked> Suites</label>
+                        <label class="flex items-center gap-2 cursor-pointer"><input type="checkbox"
+                                class="accent-blue-600"> Penthouse</label>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h4 class="text-sm font-semibold text-slate-700 mb-3">Max Guests</h4>
+                    <input type="range" min="1" max="6" value="2" class="w-full accent-blue-600">
+                    <div class="flex justify-between text-xs text-slate-500 mt-1">
+                        <span>1</span><span>6+</span>
+                    </div>
+                </div>
+
+                <button
+                    class="w-full bg-slate-100 text-slate-700 py-2 rounded font-medium hover:bg-slate-200 transition-colors text-sm">Clear
+                    Filters</button>
+            </div>
+        </aside>
+
+        <!-- Room List -->
+        <main class="flex-1 space-y-6 animate__animated animate__fadeInRight">
+
+            <!-- List Item 1 -->
+            <div
+                class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 flex flex-col md:flex-row group hover:shadow-lg transition-all duration-300">
+                <div class="md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-6 md:w-3/5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <h2 class="text-2xl font-bold text-slate-900">Ocean View Suite</h2>
+                            <div class="text-right">
+                                <span class="block text-2xl font-bold text-blue-600">$280</span>
+                                <span class="text-xs text-slate-500">per night</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4">Luxury 65sqm suite featuring a separate living area,
+                            king-sized bed, and a private balcony overlooking the Atlantic Ocean.</p>
+                        <div class="flex gap-4 text-sm text-slate-500 mb-6">
+                            <span class="flex items-center gap-1">👥 2 Guests</span>
+                            <span class="flex items-center gap-1">🛏️ 1 King Bed</span>
+                            <span class="flex items-center gap-1">📐 65 sqm</span>
+                        </div>
+                    </div>
+                    <div class="flex gap-3">
+                        <a href="room-detail.html"
+                            class="flex-1 text-center border border-blue-600 text-blue-600 py-2.5 rounded-lg font-medium hover:bg-blue-50 transition-colors">View
+                            Details</a>
+                        <a href="booking.html"
+                            class="flex-1 text-center bg-blue-600 text-white py-2.5 rounded-lg font-medium hover:bg-blue-700 transition-colors shadow-md">Book
+                            Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add more room items here following the same structure -->
+
+        </main>
+    </div>
+</body>
+
+</html>

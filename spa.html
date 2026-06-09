@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spa & Wellness - OceanBlue</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation (Same as above) -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg"></div>
+                <span class="font-bold text-2xl text-slate-900">Ocean<span class="text-blue-600">Blue</span></span>
+            </a>
+            <div class="hidden lg:flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="text-slate-600 hover:text-blue-600">Home</a>
+                <a href="rooms.html" class="text-slate-600 hover:text-blue-600">Rooms</a>
+                <a href="dining.html" class="text-slate-600 hover:text-blue-600">Dining</a>
+                <a href="spa.html" class="text-blue-600">Spa & Wellness</a>
+                <a href="events.html" class="text-slate-600 hover:text-blue-600">Events</a>
+                <a href="contact.html" class="text-slate-600 hover:text-blue-600">Contact</a>
+            </div>
+            <a href="booking.html"
+                class="bg-blue-600 text-white px-5 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors">Book
+                Now</a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <div class="bg-blue-50 py-20 text-center animate__animated animate__fadeIn">
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">Rejuvenate Your Senses</h1>
+        <p class="text-slate-600 max-w-2xl mx-auto">Escape the city pace and indulge in our holistic wellness center,
+            featuring a world-class spa, heated pools, and a fully equipped fitness studio.</p>
+    </div>
+
+    <!-- Wellness Grid -->
+    <div class="max-w-7xl mx-auto px-4 py-16 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <!-- Spa Card -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 group">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">The Lotus Spa</h3>
+                <p class="text-sm text-slate-600 mb-4">Offering deep tissue massages, aromatherapy, and revitalizing
+                    facials using premium organic products.</p>
+                <a href="#" class="text-blue-600 font-semibold hover:text-blue-800">Book a Treatment &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Fitness Card -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 group">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Fitness Center</h3>
+                <p class="text-sm text-slate-600 mb-4">Open 24/7. Equipped with the latest cardiovascular machines, free
+                    weights, and a dedicated yoga studio.</p>
+                <a href="#" class="text-blue-600 font-semibold hover:text-blue-800">View Equipment &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Pool Card -->
+        <div class="bg-white rounded-xl overflow-hidden shadow-md border border-slate-100 group">
+            <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-slate-900 mb-2">Infinity Pool</h3>
+                <p class="text-sm text-slate-600 mb-4">Our temperature-controlled outdoor pool features private cabanas
+                    and poolside drink service.</p>
+                <a href="#" class="text-blue-600 font-semibold hover:text-blue-800">Cabana Reservations &rarr;</a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
