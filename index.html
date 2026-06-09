@@ -1,191 +1,630 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OceanBlue Hotel & Suites</title>
+    <title>OceanBlue Hotel & Suites | Luxury Redefined</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Animate.css for scroll animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- Swiper.js CSS for Hero Slider -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .bg-hero {
-            background-image: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.4)), url('https://images.unsplash.com/photo-1542314831-c6a4d7429362?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Swiper Customization */
+        .swiper-slide-active .hero-text {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-text {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: white !important;
+            background: rgba(15, 23, 42, 0.4);
+            padding: 2rem;
+            border-radius: 50%;
+            transform: scale(0.7);
+            transition: all 0.3s ease;
+        }
+
+        .swiper-button-next:hover,
+        .swiper-button-prev:hover {
+            background: rgba(37, 99, 235, 0.8);
+            transform: scale(0.8);
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: #2563eb !important;
+        }
+
+        /* Smooth reveal class for JS scroll listener */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
 
     <!-- Navigation -->
     <nav class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center gap-2">
-                    <div class="w-8 h-8 bg-blue-600 rounded-lg animate__animated animate__pulse animate__infinite"></div>
-                    <span class="font-bold text-2xl text-slate-900 tracking-tight">Ocean<span class="text-blue-600">Blue</span></span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-blue-600 font-semibold transition-colors">Home</a>
-                    <a href="#rooms" class="text-slate-600 hover:text-blue-600 transition-colors">Rooms</a>
-                    <a href="#amenities" class="text-slate-600 hover:text-blue-600 transition-colors">Amenities</a>
-                    <a href="policies.html" class="text-slate-600 hover:text-blue-600 transition-colors">Policies</a>
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg animate__animated animate__pulse animate__infinite">
+                    </div>
+                    <span class="font-bold text-2xl text-slate-900 tracking-tight">Ocean<span
+                            class="text-blue-600">Blue</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium text-sm">
+                    <a href="index.html" class="text-blue-600 transition-colors">Home</a>
+                    <a href="rooms.html" class="text-slate-600 hover:text-blue-600 transition-colors">Rooms</a>
+                    <a href="dining.html" class="text-slate-600 hover:text-blue-600 transition-colors">Dining</a>
+                    <a href="spa.html" class="text-slate-600 hover:text-blue-600 transition-colors">Spa</a>
+                    <a href="events.html" class="text-slate-600 hover:text-blue-600 transition-colors">Events</a>
+                    <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
                 </div>
                 <div>
-                    <a href="booking.html" class="bg-blue-600 text-white px-6 py-2.5 rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5">Book Now</a>
+                    <a href="booking.html"
+                        class="bg-blue-600 text-white px-6 py-2.5 rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5">Book
+                        Now</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center bg-hero pt-20">
-        <div class="text-center px-4 animate__animated animate__fadeInUp">
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">Experience Unrivaled Comfort</h1>
-            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto">Discover the perfect blend of modern luxury and exceptional service in the heart of the city.</p>
+    <!-- Hero Slider Section (Swiper.js) -->
+    <section class="relative h-screen w-full">
+        <div class="swiper mySwiper h-full w-full">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide relative h-full w-full">
+                    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 to-slate-900/40 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1542314831-c6a4d7429362?q=80&w=2070&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover" alt="Hotel Exterior">
+                    <div class="relative z-20 h-full flex items-center justify-center text-center px-4">
+                        <div class="hero-text max-w-4xl">
+                            <span class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4 block">Welcome
+                                to OceanBlue</span>
+                            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+                                Experience Unrivaled Comfort</h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto">Discover the perfect
+                                blend of modern luxury and exceptional service in the heart of the city.</p>
+                            <a href="#rooms"
+                                class="bg-transparent border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-slate-900 transition-all duration-300">Discover
+                                Rooms</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide relative h-full w-full">
+                    <div class="absolute inset-0 bg-slate-900/50 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover" alt="Luxury Suite">
+                    <div class="relative z-20 h-full flex items-center justify-center text-center px-4">
+                        <div class="hero-text max-w-4xl">
+                            <span class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4 block">Premium
+                                Accommodation</span>
+                            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">Wake
+                                Up to Ocean Views</h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto">Our suites are designed
+                                to provide the ultimate sanctuary for relaxation and rejuvenation.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide relative h-full w-full">
+                    <div class="absolute inset-0 bg-slate-900/50 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?q=80&w=2070&auto=format&fit=crop"
+                        class="absolute inset-0 w-full h-full object-cover" alt="Swimming Pool">
+                    <div class="relative z-20 h-full flex items-center justify-center text-center px-4">
+                        <div class="hero-text max-w-4xl">
+                            <span
+                                class="text-blue-400 font-bold tracking-widest uppercase text-sm mb-4 block">World-Class
+                                Facilities</span>
+                            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+                                Relax by the Infinity Pool</h1>
+                            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-2xl mx-auto">Indulge in our holistic
+                                wellness center and temperature-controlled outdoor pools.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Swiper Controls -->
+            <div class="swiper-button-next z-30"></div>
+            <div class="swiper-button-prev z-30"></div>
+            <div class="swiper-pagination z-30 mb-20"></div>
         </div>
 
-        <!-- Booking Bar UI -->
-        <div class="absolute -bottom-16 left-0 right-0 max-w-5xl mx-auto px-4 animate__animated animate__fadeInUp animate__delay-1s">
-            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-4 flex flex-col md:flex-row gap-4 items-end border border-slate-100">
-                <div class="w-full md:w-1/4">
-                    <label class="block text-sm font-medium text-slate-600 mb-1">Check-in</label>
-                    <input type="date" class="w-full border-slate-200 border rounded-lg p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-700">
+        <!-- Booking Availability Bar (Overlapping Hero) -->
+        <div class="absolute bottom-0 left-0 right-0 z-40 transform translate-y-1/2 max-w-6xl mx-auto px-4">
+            <div
+                class="bg-white rounded-xl shadow-2xl p-6 md:p-8 flex flex-col lg:flex-row gap-6 items-end border border-slate-100">
+                <div class="w-full lg:w-1/4">
+                    <label
+                        class="block text-sm font-semibold text-slate-700 mb-2 uppercase tracking-wide">Check-in</label>
+                    <input type="date"
+                        class="w-full border-b-2 border-slate-200 py-2 focus:border-blue-600 outline-none text-slate-700 bg-transparent transition-colors">
                 </div>
-                <div class="w-full md:w-1/4">
-                    <label class="block text-sm font-medium text-slate-600 mb-1">Check-out</label>
-                    <input type="date" class="w-full border-slate-200 border rounded-lg p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-700">
+                <div class="w-full lg:w-1/4">
+                    <label
+                        class="block text-sm font-semibold text-slate-700 mb-2 uppercase tracking-wide">Check-out</label>
+                    <input type="date"
+                        class="w-full border-b-2 border-slate-200 py-2 focus:border-blue-600 outline-none text-slate-700 bg-transparent transition-colors">
                 </div>
-                <div class="w-full md:w-1/4">
-                    <label class="block text-sm font-medium text-slate-600 mb-1">Guests</label>
-                    <select class="w-full border-slate-200 border rounded-lg p-3 focus:ring-2 focus:ring-blue-600 outline-none text-slate-700 bg-white">
+                <div class="w-full lg:w-1/4">
+                    <label
+                        class="block text-sm font-semibold text-slate-700 mb-2 uppercase tracking-wide">Guests</label>
+                    <select
+                        class="w-full border-b-2 border-slate-200 py-2 focus:border-blue-600 outline-none text-slate-700 bg-transparent cursor-pointer transition-colors">
                         <option>1 Adult, 0 Children</option>
                         <option selected>2 Adults, 0 Children</option>
                         <option>2 Adults, 2 Children</option>
                     </select>
                 </div>
-                <div class="w-full md:w-1/4">
-                    <a href="booking.html" class="block text-center w-full bg-blue-600 text-white p-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors shadow-md">Check Availability</a>
+                <div class="w-full lg:w-1/4">
+                    <a href="booking.html"
+                        class="block text-center w-full bg-blue-600 text-white py-3.5 rounded-lg font-bold hover:bg-blue-700 transition-colors shadow-lg">Check
+                        Availability</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome / Intro Section -->
+    <section class="py-32 mt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+            <div class="lg:w-1/2">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block">Our Story</span>
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 leading-tight">A Sanctuary of Elegance in the Heart of
+                    the City</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-6">Since 2010, OceanBlue has set the standard for
+                    modern luxury. We believe that true hospitality lies in the details—from the thread count of our
+                    Egyptian cotton sheets to the personalized greeting you receive upon arrival.</p>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">Whether you are visiting for a crucial business
+                    meeting or a restorative weekend getaway, our dedicated staff ensures your stay is nothing short of
+                    perfection.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Signature_of_John_Hancock.svg"
+                    class="h-12 opacity-60" alt="Manager Signature">
+                <p class="text-sm font-bold text-slate-900 mt-2">James Carter, General Manager</p>
+            </div>
+            <div class="lg:w-1/2 relative">
+                <img src="https://images.unsplash.com/photo-1551882547-ff40c0d5bf8f?q=80&w=2070&auto=format&fit=crop"
+                    class="w-full h-[500px] object-cover rounded-2xl shadow-2xl z-10 relative">
+                <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-blue-600 rounded-2xl -z-10"></div>
+                <div class="absolute -top-8 -right-8 w-48 h-48 border-4 border-slate-200 rounded-2xl -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Grid Section -->
+    <section class="bg-slate-900 py-24 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+            <div class="text-center mb-16">
+                <span class="text-blue-400 font-bold tracking-wider uppercase text-sm mb-2 block">Facilities</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Curated Amenities for Your Comfort</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        📶</div>
+                    <h3 class="font-bold text-xl mb-2">High-Speed Wi-Fi</h3>
+                    <p class="text-slate-400 text-sm">Complimentary fiber-optic internet access throughout the entire
+                        property.</p>
+                </div>
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        🍽️</div>
+                    <h3 class="font-bold text-xl mb-2">24/7 Room Service</h3>
+                    <p class="text-slate-400 text-sm">Enjoy our chef's signature dishes in the privacy of your suite,
+                        anytime.</p>
+                </div>
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        🚗</div>
+                    <h3 class="font-bold text-xl mb-2">Valet Parking</h3>
+                    <p class="text-slate-400 text-sm">Secure, underground parking with dedicated valet and EV charging
+                        stations.</p>
+                </div>
+                <div
+                    class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
+                    <div
+                        class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        🏊</div>
+                    <h3 class="font-bold text-xl mb-2">Pool & Spa</h3>
+                    <p class="text-slate-400 text-sm">Relax in our rooftop infinity pool or book a deep tissue massage
+                        at our spa.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Rooms Preview Section -->
-    <section id="rooms" class="py-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-bold text-slate-900 mb-4">Our Signature Rooms</h2>
-            <p class="text-slate-600 max-w-2xl mx-auto">Designed for ultimate relaxation, featuring premium bedding, panoramic views, and tailored amenities.</p>
+    <section id="rooms" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 reveal">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block">Accommodation</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Signature Rooms</h2>
+            </div>
+            <a href="rooms.html"
+                class="hidden md:block text-blue-600 font-semibold hover:text-blue-800 transition-colors">View All Rooms
+                &rarr;</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <!-- Room Card 1 -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-slate-100">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Deluxe Room">
-                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">From $150/night</div>
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform group border border-slate-100">
+                <div class="h-72 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?q=80&w=2070&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Deluxe Room">
+                    <div
+                        class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+                        From $150/night</div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Executive Deluxe Room</h3>
-                    <p class="text-slate-600 text-sm mb-4">Spacious 40sqm room with city views, king-size bed, and dedicated workspace.</p>
-                    <a href="booking.html" class="text-blue-600 font-semibold hover:text-blue-800 flex items-center gap-1">Reserve Room <span>&rarr;</span></a>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Executive Deluxe Room</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-2">Spacious 40sqm room with city views, king-size
+                        bed, and a dedicated workspace for the modern traveler.</p>
+                    <div class="flex gap-4 text-xs text-slate-500 mb-6 border-t border-slate-100 pt-4">
+                        <span class="flex items-center gap-1">👥 2 Guests</span>
+                        <span class="flex items-center gap-1">🛏️ 1 King Bed</span>
+                        <span class="flex items-center gap-1">📐 40 sqm</span>
+                    </div>
+                    <a href="booking.html"
+                        class="block text-center bg-slate-50 border border-slate-200 text-slate-900 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Reserve
+                        Room</a>
                 </div>
             </div>
 
             <!-- Room Card 2 -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-slate-100">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Suite">
-                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">From $280/night</div>
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform group border border-slate-100">
+                <div class="h-72 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2070&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Suite">
+                    <div
+                        class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+                        From $280/night</div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Ocean View Suite</h3>
-                    <p class="text-slate-600 text-sm mb-4">Luxury 65sqm suite featuring a separate living area and a private balcony.</p>
-                    <a href="booking.html" class="text-blue-600 font-semibold hover:text-blue-800 flex items-center gap-1">Reserve Room <span>&rarr;</span></a>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Ocean View Suite</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-2">Luxury 65sqm suite featuring a separate living
+                        area, marble bathroom, and a private balcony.</p>
+                    <div class="flex gap-4 text-xs text-slate-500 mb-6 border-t border-slate-100 pt-4">
+                        <span class="flex items-center gap-1">👥 3 Guests</span>
+                        <span class="flex items-center gap-1">🛏️ 1 King, 1 Sofa</span>
+                        <span class="flex items-center gap-1">📐 65 sqm</span>
+                    </div>
+                    <a href="booking.html"
+                        class="block text-center bg-slate-50 border border-slate-200 text-slate-900 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Reserve
+                        Room</a>
                 </div>
             </div>
 
             <!-- Room Card 3 -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group border border-slate-100">
-                <div class="h-64 overflow-hidden relative">
-                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Penthouse">
-                    <div class="absolute top-4 right-4 bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">From $550/night</div>
+            <div
+                class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 transform group border border-slate-100">
+                <div class="h-72 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?q=80&w=2070&auto=format&fit=crop"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Penthouse">
+                    <div
+                        class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
+                        From $550/night</div>
                 </div>
                 <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">Presidential Penthouse</h3>
-                    <p class="text-slate-600 text-sm mb-4">Top-floor luxury with two bedrooms, private jacuzzi, and panoramic skyline views.</p>
-                    <a href="booking.html" class="text-blue-600 font-semibold hover:text-blue-800 flex items-center gap-1">Reserve Room <span>&rarr;</span></a>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Presidential Penthouse</h3>
+                    <p class="text-slate-600 text-sm mb-4 line-clamp-2">Top-floor luxury with two bedrooms, private
+                        jacuzzi, panoramic skyline views, and dedicated butler service.</p>
+                    <div class="flex gap-4 text-xs text-slate-500 mb-6 border-t border-slate-100 pt-4">
+                        <span class="flex items-center gap-1">👥 4 Guests</span>
+                        <span class="flex items-center gap-1">🛏️ 2 King Beds</span>
+                        <span class="flex items-center gap-1">📐 120 sqm</span>
+                    </div>
+                    <a href="booking.html"
+                        class="block text-center bg-slate-50 border border-slate-200 text-slate-900 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Reserve
+                        Room</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 text-center md:hidden">
+            <a href="rooms.html" class="text-blue-600 font-semibold hover:text-blue-800 transition-colors">View All
+                Rooms &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Special Offers Promo -->
+    <section class="py-20 bg-blue-600 reveal">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div class="text-white md:w-2/3">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Extended Stay Special</h2>
+                <p class="text-blue-100 text-lg">Book 3 nights and get the 4th night absolutely free. Includes
+                    complimentary daily breakfast and a $50 spa credit.</p>
+            </div>
+            <div class="md:w-1/3 text-right">
+                <a href="rooms.html"
+                    class="inline-block bg-white text-blue-600 px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">Claim
+                    Offer Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-slate-50 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-blue-600 font-bold tracking-wider uppercase text-sm mb-2 block">Guest Reviews</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900">What Our Guests Say</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative">
+                    <span class="text-6xl text-blue-100 absolute top-4 left-4 font-serif">"</span>
+                    <p class="text-slate-600 relative z-10 italic mb-6">"An absolutely flawless experience from check-in
+                        to check-out. The attention to detail in the Ocean View Suite was magnificent."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            S.R</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Sarah Richards</h4>
+                            <div class="text-yellow-400 text-xs">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative">
+                    <span class="text-6xl text-blue-100 absolute top-4 left-4 font-serif">"</span>
+                    <p class="text-slate-600 relative z-10 italic mb-6">"The rooftop restaurant is a must-visit.
+                        Incredible food and the staff went above and beyond for our anniversary."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            M.T</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Michael Thompson</h4>
+                            <div class="text-yellow-400 text-xs">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 relative">
+                    <span class="text-6xl text-blue-100 absolute top-4 left-4 font-serif">"</span>
+                    <p class="text-slate-600 relative z-10 italic mb-6">"Best business hotel I've stayed in. Fast Wi-Fi,
+                        quiet rooms, and the valet service was incredibly prompt."</p>
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center font-bold text-slate-500">
+                            E.W</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-sm">Elena Woods</h4>
+                            <div class="text-yellow-400 text-xs">★★★★★</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Custom Live Chat Mockup -->
+    <!-- Custom Live Chat (With JS Functionality) -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        <!-- Chat Window (Hidden by default, shown for demo) -->
-        <div class="bg-white w-80 rounded-xl shadow-2xl border border-slate-200 mb-4 overflow-hidden animate__animated animate__fadeInUp">
+        <!-- Chat Window -->
+        <div id="chatWindow"
+            class="bg-white w-80 rounded-2xl shadow-2xl border border-slate-200 mb-4 overflow-hidden hidden transition-all duration-300 origin-bottom-right">
             <div class="bg-blue-600 p-4 text-white flex justify-between items-center">
-                <div>
-                    <h4 class="font-bold">Live Support</h4>
-                    <p class="text-xs text-blue-100">We typically reply in 2 minutes</p>
+                <div class="flex items-center gap-3">
+                    <div class="relative">
+                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">🎧</div>
+                        <div
+                            class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-blue-600 rounded-full">
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Live Concierge</h4>
+                        <p class="text-[10px] text-blue-100">Typically replies in minutes</p>
+                    </div>
                 </div>
-                <button class="text-white hover:text-blue-200">&times;</button>
+                <button id="closeChat" class="text-white/80 hover:text-white transition-colors p-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
             </div>
-            <div class="h-64 bg-slate-50 p-4 overflow-y-auto flex flex-col gap-3 text-sm">
-                <div class="bg-white p-3 rounded-lg rounded-tl-none border border-slate-100 shadow-sm self-start max-w-[85%] text-slate-700">
-                    Hello! How can we assist with your booking today?
-                </div>
-                <div class="bg-blue-600 p-3 rounded-lg rounded-tr-none shadow-sm self-end max-w-[85%] text-white">
-                    I need to know if you offer airport shuttles.
+            <div class="h-72 bg-slate-50 p-4 overflow-y-auto flex flex-col gap-3 text-sm">
+                <div class="text-xs text-center text-slate-400 mb-2">Today, 10:42 AM</div>
+                <div
+                    class="bg-white p-3 rounded-2xl rounded-tl-sm border border-slate-100 shadow-sm self-start max-w-[85%] text-slate-700">
+                    Hello! Welcome to OceanBlue. How can I assist you with your reservation today?
                 </div>
             </div>
-            <div class="p-3 bg-white border-t border-slate-100 flex gap-2">
-                <input type="text" placeholder="Type a message..." class="w-full border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-600">
-                <button class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
-                    &rarr;
+            <div class="p-3 bg-white border-t border-slate-100 flex gap-2 items-center">
+                <button class="text-slate-400 hover:text-blue-600 transition-colors">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13">
+                        </path>
+                    </svg>
+                </button>
+                <input type="text" placeholder="Type a message..."
+                    class="w-full border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-600 bg-slate-50 focus:bg-white transition-colors">
+                <button
+                    class="bg-blue-600 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors flex-shrink-0">
+                    <svg class="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
                 </button>
             </div>
         </div>
-        
+
         <!-- Chat Toggle Button -->
-        <button class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all duration-300">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+        <button id="chatToggle"
+            class="w-14 h-14 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 hover:scale-110 transition-all duration-300 relative group">
+            <div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-white rounded-full"></div>
+            <svg class="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z">
+                </path>
+            </svg>
         </button>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-300 py-12 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer class="bg-slate-950 text-slate-400 py-16 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div>
-                <span class="font-bold text-2xl text-white tracking-tight mb-4 block">Ocean<span class="text-blue-500">Blue</span></span>
-                <p class="text-sm text-slate-400">Setting the standard for modern hospitality and exceptional guest experiences.</p>
+                <a href="index.html" class="flex items-center gap-2 mb-6">
+                    <div class="w-6 h-6 bg-blue-600 rounded"></div>
+                    <span class="font-bold text-2xl text-white tracking-tight">Ocean<span
+                            class="text-blue-600">Blue</span></span>
+                </a>
+                <p class="text-sm leading-relaxed mb-6">Setting the global standard for modern luxury hospitality and
+                    exceptional, intuitive guest experiences.</p>
+                <div class="flex gap-4">
+                    <!-- Social Placeholders -->
+                    <a href="#"
+                        class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors">In</a>
+                    <a href="#"
+                        class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors">Fb</a>
+                    <a href="#"
+                        class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors">Tw</a>
+                </div>
             </div>
             <div>
-                <h4 class="text-white font-semibold mb-4">Quick Links</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#" class="hover:text-blue-400 transition-colors">Rooms & Suites</a></li>
-                    <li><a href="#" class="hover:text-blue-400 transition-colors">Dining & Bar</a></li>
-                    <li><a href="#" class="hover:text-blue-400 transition-colors">Spa & Wellness</a></li>
+                <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Explore</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="rooms.html" class="hover:text-blue-400 transition-colors">Rooms & Suites</a></li>
+                    <li><a href="dining.html" class="hover:text-blue-400 transition-colors">Dining & Bars</a></li>
+                    <li><a href="spa.html" class="hover:text-blue-400 transition-colors">Spa & Wellness</a></li>
+                    <li><a href="events.html" class="hover:text-blue-400 transition-colors">Meetings & Events</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-semibold mb-4">Legal</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Terms & Conditions</a></li>
+                <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Legal</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Terms & Conditions</a>
+                    </li>
                     <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
                     <li><a href="policies.html" class="hover:text-blue-400 transition-colors">Cookie Policy</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-white font-semibold mb-4">Contact</h4>
-                <ul class="space-y-2 text-sm text-slate-400">
-                    <li>123 Blue Avenue, City Center</li>
-                    <li>reservations@oceanblue.com</li>
-                    <li>+1 (555) 123-4567</li>
+                <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Contact Us</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex gap-3"><span class="text-blue-500">📍</span> 123 Blue Avenue, City Center, 10001
+                    </li>
+                    <li class="flex gap-3"><span class="text-blue-500">✉️</span> reservations@oceanblue.com</li>
+                    <li class="flex gap-3"><span class="text-blue-500">📞</span> +1 (555) 123-4567</li>
                 </ul>
             </div>
         </div>
+        <div class="max-w-7xl mx-auto px-4 mt-16 pt-8 border-t border-slate-800 text-sm text-center">
+            &copy; 2026 OceanBlue Hotel & Suites. All rights reserved.
+        </div>
     </footer>
+
+    <!-- Swiper.js Script Initialization -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <!-- Functional JavaScript -->
+    <script>
+        // 1. Initialize Hero Slider (Swiper)
+        const swiper = new Swiper(".mySwiper", {
+            spaceBetween: 0,
+            effect: "fade", // Gives a premium fade transition
+            loop: true,
+            autoplay: {
+                delay: 6000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+
+        // 2. Scroll Animation Reveal
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on load
+
+        // 3. Live Chat Functionality
+        const chatToggle = document.getElementById('chatToggle');
+        const closeChat = document.getElementById('closeChat');
+        const chatWindow = document.getElementById('chatWindow');
+
+        function toggleChat() {
+            if (chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.remove('hidden');
+                // Small delay to allow display:block to apply before animating opacity/transform
+                setTimeout(() => {
+                    chatWindow.classList.remove('opacity-0', 'scale-95');
+                    chatWindow.classList.add('opacity-100', 'scale-100');
+                }, 10);
+            } else {
+                chatWindow.classList.remove('opacity-100', 'scale-100');
+                chatWindow.classList.add('opacity-0', 'scale-95');
+                // Wait for animation to finish before hiding
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        chatToggle.addEventListener('click', toggleChat);
+        closeChat.addEventListener('click', toggleChat);
+
+        // Initial setup for chat animation classes
+        chatWindow.classList.add('opacity-0', 'scale-95');
+    </script>
 </body>
+
 </html>
