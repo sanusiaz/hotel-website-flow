@@ -18,6 +18,9 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -70,7 +73,7 @@
 <body class="bg-slate-50 text-slate-800 overflow-x-hidden">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
+    <nav class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
@@ -79,6 +82,8 @@
                     <span class="font-bold text-2xl text-slate-900 tracking-tight">Ocean<span
                             class="text-blue-600">Blue</span></span>
                 </a>
+                
+                
                 <div class="hidden md:flex space-x-8 font-medium text-sm">
                     <a href="index.html" class="text-blue-600 transition-colors">Home</a>
                     <a href="rooms.html" class="text-slate-600 hover:text-blue-600 transition-colors">Rooms</a>
@@ -87,9 +92,16 @@
                     <a href="events.html" class="text-slate-600 hover:text-blue-600 transition-colors">Events</a>
                     <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
                 </div>
-                <div>
+                <div class="flex items-center gap-3">
+                    <div id="google_translate_element" class="hidden lg:block overflow-hidden rounded-md h-8 mt-1"></div>
+                    <select id="currency-selector" class="bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-md focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 cursor-pointer outline-none hidden sm:block">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                    </select>
                     <a href="booking.html"
-                        class="bg-blue-600 text-white px-6 py-2.5 rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5">Book
+                        class="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5 whitespace-nowrap">Book
                         Now</a>
                 </div>
             </div>
@@ -233,7 +245,7 @@
                     class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
                     <div
                         class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        📶</div>
+                        <iconify-icon icon="mdi:wifi"></iconify-icon></div>
                     <h3 class="font-bold text-xl mb-2">High-Speed Wi-Fi</h3>
                     <p class="text-slate-400 text-sm">Complimentary fiber-optic internet access throughout the entire
                         property.</p>
@@ -242,7 +254,7 @@
                     class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
                     <div
                         class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        🍽️</div>
+                        <iconify-icon icon="mdi:room-service"></iconify-icon></div>
                     <h3 class="font-bold text-xl mb-2">24/7 Room Service</h3>
                     <p class="text-slate-400 text-sm">Enjoy our chef's signature dishes in the privacy of your suite,
                         anytime.</p>
@@ -251,7 +263,7 @@
                     class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
                     <div
                         class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        🚗</div>
+                        <iconify-icon icon="mdi:car"></iconify-icon></div>
                     <h3 class="font-bold text-xl mb-2">Valet Parking</h3>
                     <p class="text-slate-400 text-sm">Secure, underground parking with dedicated valet and EV charging
                         stations.</p>
@@ -260,7 +272,7 @@
                     class="bg-slate-800 p-8 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300">
                     <div
                         class="w-14 h-14 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
-                        🏊</div>
+                        <iconify-icon icon="mdi:pool"></iconify-icon></div>
                     <h3 class="font-bold text-xl mb-2">Pool & Spa</h3>
                     <p class="text-slate-400 text-sm">Relax in our rooftop infinity pool or book a deep tissue massage
                         at our spa.</p>
@@ -291,16 +303,16 @@
                         alt="Deluxe Room">
                     <div
                         class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
-                        From $150/night</div>
+                        From <span class="price-display" data-usd-value="150">$150</span>/night</div>
                 </div>
                 <div class="p-6">
                     <h3 class="text-2xl font-bold text-slate-900 mb-2">Executive Deluxe Room</h3>
                     <p class="text-slate-600 text-sm mb-4 line-clamp-2">Spacious 40sqm room with city views, king-size
                         bed, and a dedicated workspace for the modern traveler.</p>
                     <div class="flex gap-4 text-xs text-slate-500 mb-6 border-t border-slate-100 pt-4">
-                        <span class="flex items-center gap-1">👥 2 Guests</span>
-                        <span class="flex items-center gap-1">🛏️ 1 King Bed</span>
-                        <span class="flex items-center gap-1">📐 40 sqm</span>
+                        <span class="flex items-center gap-1">2 Guests</span>
+                        <span class="flex items-center gap-1">1 King Bed</span>
+                        <span class="flex items-center gap-1">40 sqm</span>
                     </div>
                     <a href="booking.html"
                         class="block text-center bg-slate-50 border border-slate-200 text-slate-900 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Reserve
@@ -317,16 +329,16 @@
                         alt="Suite">
                     <div
                         class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
-                        From $280/night</div>
+                        From <span class="price-display" data-usd-value="280">$280</span>/night</div>
                 </div>
                 <div class="p-6">
                     <h3 class="text-2xl font-bold text-slate-900 mb-2">Ocean View Suite</h3>
                     <p class="text-slate-600 text-sm mb-4 line-clamp-2">Luxury 65sqm suite featuring a separate living
                         area, marble bathroom, and a private balcony.</p>
                     <div class="flex gap-4 text-xs text-slate-500 mb-6 border-t border-slate-100 pt-4">
-                        <span class="flex items-center gap-1">👥 3 Guests</span>
-                        <span class="flex items-center gap-1">🛏️ 1 King, 1 Sofa</span>
-                        <span class="flex items-center gap-1">📐 65 sqm</span>
+                        <span class="flex items-center gap-1">3 Guests</span>
+                        <span class="flex items-center gap-1">1 King, 1 Sofa</span>
+                        <span class="flex items-center gap-1">65 sqm</span>
                     </div>
                     <a href="booking.html"
                         class="block text-center bg-slate-50 border border-slate-200 text-slate-900 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Reserve
@@ -343,16 +355,16 @@
                         alt="Penthouse">
                     <div
                         class="absolute top-4 right-4 bg-slate-900/80 backdrop-blur text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-lg">
-                        From $550/night</div>
+                        From <span class="price-display" data-usd-value="550">$550</span>/night</div>
                 </div>
                 <div class="p-6">
                     <h3 class="text-2xl font-bold text-slate-900 mb-2">Presidential Penthouse</h3>
                     <p class="text-slate-600 text-sm mb-4 line-clamp-2">Top-floor luxury with two bedrooms, private
                         jacuzzi, panoramic skyline views, and dedicated butler service.</p>
                     <div class="flex gap-4 text-xs text-slate-500 mb-6 border-t border-slate-100 pt-4">
-                        <span class="flex items-center gap-1">👥 4 Guests</span>
-                        <span class="flex items-center gap-1">🛏️ 2 King Beds</span>
-                        <span class="flex items-center gap-1">📐 120 sqm</span>
+                        <span class="flex items-center gap-1">4 Guests</span>
+                        <span class="flex items-center gap-1">2 King Beds</span>
+                        <span class="flex items-center gap-1">120 sqm</span>
                     </div>
                     <a href="booking.html"
                         class="block text-center bg-slate-50 border border-slate-200 text-slate-900 py-2.5 rounded-lg font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">Reserve
@@ -373,7 +385,7 @@
             <div class="text-white md:w-2/3">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Extended Stay Special</h2>
                 <p class="text-blue-100 text-lg">Book 3 nights and get the 4th night absolutely free. Includes
-                    complimentary daily breakfast and a $50 spa credit.</p>
+                    complimentary daily breakfast and a <span class="price-display" data-usd-value="50">$50</span> spa credit.</p>
             </div>
             <div class="md:w-1/3 text-right">
                 <a href="rooms.html"
@@ -446,7 +458,7 @@
             <div class="bg-blue-600 p-4 text-white flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <div class="relative">
-                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">🎧</div>
+                        <div class="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"><iconify-icon icon="mdi:headphones"></iconify-icon></div>
                         <div
                             class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-400 border-2 border-blue-600 rounded-full">
                         </div>
@@ -545,10 +557,10 @@
             <div>
                 <h4 class="text-white font-bold mb-6 uppercase text-sm tracking-wider">Contact Us</h4>
                 <ul class="space-y-3 text-sm">
-                    <li class="flex gap-3"><span class="text-blue-500">📍</span> 123 Blue Avenue, City Center, 10001
+                    <li class="flex gap-3"><span class="text-blue-500"><iconify-icon icon="mdi:map-marker"></iconify-icon></span> 123 Blue Avenue, City Center, 10001
                     </li>
-                    <li class="flex gap-3"><span class="text-blue-500">✉️</span> reservations@oceanblue.com</li>
-                    <li class="flex gap-3"><span class="text-blue-500">📞</span> +1 (555) 123-4567</li>
+                    <li class="flex gap-3"><span class="text-blue-500"><iconify-icon icon="mdi:email"></iconify-icon></span> reservations@oceanblue.com</li>
+                    <li class="flex gap-3"><span class="text-blue-500"><iconify-icon icon="mdi:phone"></iconify-icon></span> +1 (555) 123-4567</li>
                 </ul>
             </div>
         </div>
@@ -625,6 +637,11 @@
         // Initial setup for chat animation classes
         chatWindow.classList.add('opacity-0', 'scale-95');
     </script>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Custom Scripts (Currency & Translate) -->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>

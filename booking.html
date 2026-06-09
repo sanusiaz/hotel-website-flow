@@ -13,19 +13,44 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD" id="paypal-sdk-script"></script>
 </head>
 
 <body class="bg-slate-50 text-slate-800">
 
-    <nav class="bg-white border-b border-slate-200 py-4">
-        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
-                <div class="w-6 h-6 bg-blue-600 rounded"></div>
-                <span class="font-bold text-xl text-slate-900 tracking-tight">Ocean<span
-                        class="text-blue-600">Blue</span></span>
-            </a>
-            <span class="text-sm font-medium text-slate-500">Secure Checkout <span
-                    class="text-green-500 ml-1">🔒</span></span>
+        <nav class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg animate__animated animate__pulse animate__infinite">
+                    </div>
+                    <span class="font-bold text-2xl text-slate-900 tracking-tight">Ocean<span
+                            class="text-blue-600">Blue</span></span>
+                </a>
+                <div class="hidden md:flex space-x-8 font-medium text-sm">
+                    <a href="index.html" class="text-slate-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="rooms.html" class="text-slate-600 hover:text-blue-600 transition-colors">Rooms</a>
+                    <a href="dining.html" class="text-slate-600 hover:text-blue-600 transition-colors">Dining</a>
+                    <a href="spa.html" class="text-slate-600 hover:text-blue-600 transition-colors">Spa</a>
+                    <a href="events.html" class="text-slate-600 hover:text-blue-600 transition-colors">Events</a>
+                    <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="google_translate_element" class="hidden lg:block overflow-hidden rounded-md h-8 mt-1"></div>
+                    <select id="currency-selector" class="bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-md focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 cursor-pointer outline-none hidden sm:block">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                    </select>
+                    <a href="booking.html"
+                        class="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5 whitespace-nowrap">Book
+                        Now</a>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -55,14 +80,16 @@
             </div>
 
             <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-200">
+                
                 <h2 class="text-2xl font-bold text-slate-900 mb-6">Payment Method</h2>
                 <div class="space-y-4">
-                    <div class="border border-blue-600 bg-blue-50 p-4 rounded-lg flex items-center gap-3">
-                        <input type="radio" checked name="payment" class="w-4 h-4 text-blue-600">
+                    <!-- Credit Card Toggle -->
+                    <label class="border border-blue-600 bg-blue-50 p-4 rounded-lg flex items-center gap-3 cursor-pointer" id="cc-label">
+                        <input type="radio" checked name="payment" id="payment-cc" value="cc" class="w-4 h-4 text-blue-600">
                         <span class="font-medium text-blue-900">Credit / Debit Card</span>
-                    </div>
+                    </label>
 
-                    <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="grid grid-cols-2 gap-4 mt-4 transition-all" id="cc-form">
                         <div class="col-span-2">
                             <label class="block text-sm font-medium text-slate-700 mb-1">Card Number</label>
                             <input type="text" placeholder="0000 0000 0000 0000"
@@ -79,12 +106,22 @@
                                 class="w-full border border-slate-300 rounded-md p-2.5 focus:ring-2 focus:ring-blue-600 outline-none">
                         </div>
                     </div>
+
+                    <!-- PayPal Toggle -->
+                    <label class="border border-slate-200 bg-white p-4 rounded-lg flex items-center gap-3 cursor-pointer mt-4" id="paypal-label">
+                        <input type="radio" name="payment" id="payment-paypal" value="paypal" class="w-4 h-4 text-blue-600">
+                        <span class="font-medium text-slate-700 flex items-center gap-2"><iconify-icon icon="logos:paypal" class="text-xl"></iconify-icon> PayPal</span>
+                    </label>
                 </div>
             </div>
 
-            <button
+            <!-- Standard Checkout Button -->
+            <button id="standard-checkout-btn"
                 class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-blue-600/30">Confirm
-                & Pay $450.00</button>
+                & Pay <span class="price-display" data-usd-value="450.00">$450.00</span></button>
+
+            <!-- PayPal Button Container -->
+            <div id="paypal-button-container" class="hidden mt-6"></div>
         </div>
 
         <!-- Reservation Summary Sidebar -->
@@ -106,22 +143,93 @@
             </div>
             <div class="border-t border-slate-700 pt-6 space-y-3 text-sm">
                 <div class="flex justify-between text-slate-300">
-                    <span>$200 x 2 Nights</span>
-                    <span>$400.00</span>
+                    <span><span class="price-display" data-usd-value="200">$200</span> x 2 Nights</span>
+                    <span><span class="price-display" data-usd-value="400.00">$400.00</span></span>
                 </div>
                 <div class="flex justify-between text-slate-300">
                     <span>Taxes & Fees</span>
-                    <span>$50.00</span>
+                    <span><span class="price-display" data-usd-value="50.00">$50.00</span></span>
                 </div>
                 <div class="flex justify-between text-xl font-bold pt-4 border-t border-slate-700 text-white">
                     <span>Total</span>
-                    <span>$450.00</span>
+                    <span><span class="price-display" data-usd-value="450.00">$450.00</span></span>
                 </div>
             </div>
             <p class="text-xs text-slate-500 mt-6 text-center">By proceeding, you agree to our <a href="policies.html"
                     class="underline text-slate-400 hover:text-white">Terms & Conditions</a>.</p>
         </div>
     </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Custom Scripts (Currency & Translate) -->
+    <script src="js/scripts.js"></script>
+
+    <script>
+        // UI Toggles for Payment Method
+        const paymentCc = document.getElementById('payment-cc');
+        const paymentPaypal = document.getElementById('payment-paypal');
+        const ccForm = document.getElementById('cc-form');
+        const standardBtn = document.getElementById('standard-checkout-btn');
+        const paypalContainer = document.getElementById('paypal-button-container');
+        
+        const ccLabel = document.getElementById('cc-label');
+        const paypalLabel = document.getElementById('paypal-label');
+
+        function updatePaymentUI() {
+            if (paymentPaypal.checked) {
+                ccForm.classList.add('hidden');
+                standardBtn.classList.add('hidden');
+                paypalContainer.classList.remove('hidden');
+                
+                ccLabel.classList.remove('border-blue-600', 'bg-blue-50');
+                ccLabel.classList.add('border-slate-200', 'bg-white');
+                ccLabel.querySelector('span').classList.replace('text-blue-900', 'text-slate-700');
+                
+                paypalLabel.classList.add('border-blue-600', 'bg-blue-50');
+                paypalLabel.classList.remove('border-slate-200', 'bg-white');
+            } else {
+                ccForm.classList.remove('hidden');
+                standardBtn.classList.remove('hidden');
+                paypalContainer.classList.add('hidden');
+                
+                paypalLabel.classList.remove('border-blue-600', 'bg-blue-50');
+                paypalLabel.classList.add('border-slate-200', 'bg-white');
+                
+                ccLabel.classList.add('border-blue-600', 'bg-blue-50');
+                ccLabel.classList.remove('border-slate-200', 'bg-white');
+                ccLabel.querySelector('span').classList.replace('text-slate-700', 'text-blue-900');
+            }
+        }
+
+        paymentCc.addEventListener('change', updatePaymentUI);
+        paymentPaypal.addEventListener('change', updatePaymentUI);
+
+        // Render PayPal Buttons
+        let currentAmount = '450.00'; // Base USD amount
+
+        window.addEventListener('currencyChanged', (e) => {
+            currentAmount = (450.00 * e.detail.rate).toFixed(2);
+        });
+
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: currentAmount,
+                            currency_code: 'USD' 
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Transaction completed by ' + details.payer.name.given_name + '! Your room is booked.');
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
 </body>
 
 </html>

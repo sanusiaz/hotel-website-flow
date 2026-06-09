@@ -13,28 +13,45 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
 </head>
 
 <body class="bg-slate-50 text-slate-800">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <a href="index.html" class="flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg"></div>
-                <span class="font-bold text-2xl text-slate-900">Ocean<span class="text-blue-600">Blue</span></span>
-            </a>
-            <div class="hidden lg:flex space-x-6 text-sm font-medium">
-                <a href="index.html" class="text-slate-600 hover:text-blue-600">Home</a>
-                <a href="rooms.html" class="text-slate-600 hover:text-blue-600">Rooms</a>
-                <a href="dining.html" class="text-blue-600">Dining</a>
-                <a href="spa.html" class="text-slate-600 hover:text-blue-600">Spa & Wellness</a>
-                <a href="events.html" class="text-slate-600 hover:text-blue-600">Events</a>
-                <a href="contact.html" class="text-slate-600 hover:text-blue-600">Contact</a>
+    <nav class="sticky top-0 w-full z-50 bg-white/95 backdrop-blur shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded-lg animate__animated animate__pulse animate__infinite">
+                    </div>
+                    <span class="font-bold text-2xl text-slate-900 tracking-tight">Ocean<span
+                            class="text-blue-600">Blue</span></span>
+                </a>
+                
+                
+                <div class="hidden md:flex space-x-8 font-medium text-sm">
+                    <a href="index.html" class="text-slate-600 hover:text-blue-600 transition-colors">Home</a>
+                    <a href="rooms.html" class="text-slate-600 hover:text-blue-600 transition-colors">Rooms</a>
+                    <a href="dining.html" class="text-slate-600 hover:text-blue-600 transition-colors">Dining</a>
+                    <a href="spa.html" class="text-slate-600 hover:text-blue-600 transition-colors">Spa</a>
+                    <a href="events.html" class="text-slate-600 hover:text-blue-600 transition-colors">Events</a>
+                    <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="google_translate_element" class="hidden lg:block overflow-hidden rounded-md h-8 mt-1"></div>
+                    <select id="currency-selector" class="bg-slate-50 border border-slate-200 text-slate-700 text-xs font-medium rounded-md focus:ring-blue-500 focus:border-blue-500 block py-2 px-1 cursor-pointer outline-none hidden sm:block">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="JPY">JPY (¥)</option>
+                    </select>
+                    <a href="booking.html"
+                        class="bg-blue-600 text-white px-5 py-2.5 text-sm rounded-md font-medium hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-600/30 transform hover:-translate-y-0.5 whitespace-nowrap">Book
+                        Now</a>
+                </div>
             </div>
-            <a href="booking.html"
-                class="bg-blue-600 text-white px-5 py-2 rounded-md font-medium hover:bg-blue-700 transition-colors">Book
-                Now</a>
         </div>
     </nav>
 
@@ -99,6 +116,11 @@
         </div>
 
     </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- Custom Scripts (Currency & Translate) -->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
